@@ -56,6 +56,23 @@ export class SanityService {
     }`, { id })
   }
 
+  async getSectionContact(id: string) {
+    return this.client.fetch(`*[_id == $id][0] {
+      ...,
+      contact->{
+        ...,
+        socialLinks[]->
+      }
+    }`, { id })
+  }
+
+  async getGlobalConfig() {
+    return this.client.fetch(`*[_type == "globalConfig"][0] {
+      ...,
+      socialLinks[]->
+    }`)
+  }
+
   // async getPosts() {
   //   return this.client.fetch(`*[_type == "post"] | order(publishedAt desc) {
   //     _id,
