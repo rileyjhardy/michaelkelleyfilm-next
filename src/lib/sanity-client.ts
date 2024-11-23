@@ -73,6 +73,13 @@ export class SanityService {
     }`)
   }
 
+  async getMenu() {
+    return this.client.fetch(`*[_type == "menu"][0] {
+      ...,
+      items[]->
+    }`)
+  }
+
   // async getPosts() {
   //   return this.client.fetch(`*[_type == "post"] | order(publishedAt desc) {
   //     _id,

@@ -97,8 +97,8 @@
 
   .close-button {
     position: absolute;
-    top: 2rem;
-    right: 2rem;
+    top: 1rem;
+    right: 1rem;
     background: none;
     border: none;
     color: var(--text-color);

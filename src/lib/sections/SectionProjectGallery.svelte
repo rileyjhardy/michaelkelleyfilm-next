@@ -3,15 +3,15 @@
 
   const { _id, _type } = $props()
 
-  let data = $state(client.getSectionProjectGallery(_id))
+  let section = $state(client.getSectionProjectGallery(_id))
 </script>
 
-{#await data}
+{#await section}
   <p>Loading...</p>
-{:then data}
+{:then section}
 
 <div class="project-gallery">
-  {#each data.projects as project}
+  {#each section.projects as project}
     <a href={project.slug.current}>
       <div class="project-gallery-item">
         <h3 class="project-gallery-item__title">{project.name}</h3>

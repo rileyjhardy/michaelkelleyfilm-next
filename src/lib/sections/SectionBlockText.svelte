@@ -4,14 +4,14 @@
 
   const { _id, _type } = $props()
 
-  let data = $state(client.getSection(_id))
+  let section = $state(client.getSection(_id))
 </script>
-{#await data}
+{#await section}
   <p>Loading...</p>
-{:then data}
+{:then section}
 
 <div class="block-text">
-  <PortableText value={data.text} />
+  <PortableText value={section.text} />
 </div>
 
 {/await}

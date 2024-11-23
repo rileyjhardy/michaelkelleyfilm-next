@@ -15,3 +15,11 @@ html, body {
     padding: 0 15px 60px 15px;
   }
 }
+
+.hamburger {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  --color: var(--text-color);
+}

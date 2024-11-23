@@ -3,15 +3,15 @@
 
   const { _id, _type } = $props()
 
-  let data = $state(client.getSectionImage(_id))
+  let section = $state(client.getSectionImage(_id))
 </script>
 
-{#await data}
+{#await section}
   <p>Loading...</p>
-{:then data}
+{:then section}
 
   <div class="section-image">
-    <img src={data.imageUrl} alt={data.title} />
+    <img src={section.imageUrl} alt={section.title} />
   </div>
 {/await}
 

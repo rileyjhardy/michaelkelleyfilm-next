@@ -1,21 +1,36 @@
 <script lang="ts">
   import client from '../sanity-client'
+  import { globalState } from '../state.svelte'
 
   const { _id, _type } = $props()
+  let isPlaying = $state(false)
 
-  let data = $state(client.getSectionVideoHero(_id))
+  function handleVideoPlay() {
+    setTimeout(() => {
+      isPlaying = true
+    }, 1000)
+  }
+
+  let section = $state(client.getSectionVideoHero(_id))
 </script>
 
-{#if data}
-  {#await data}
+{#if section}
+  {#await section}
     <p>Loading...</p>
-  {:then data}
+  {:then section}
 
-    <video autoplay loop muted playsinline src={data.videoUrl}></video>
-    {#if data.foregroundImageUrl}
-      <img src={data.foregroundImageUrl} alt='Michael Kelley Film'/>
+    <video
+      autoplay
+      loop
+      muted
+      playsinline
+      src={section.videoUrl}
+      onplaying={handleVideoPlay}
+    ></video>
+    {#if section.foregroundImageUrl}
+      <img src={section.foregroundImageUrl} alt='Michael Kelley Film'/>
     {:else}
-      <div class="video-hero-text">
+      <div class="video-hero-text" class:hide={globalState.menuIsOpen || !isPlaying}>
         <h1>Michael<br>Kelley</h1>
         <h2>Director / Cinematographer</h2>
       </div>
@@ -48,6 +63,7 @@
     position: absolute;
     left: 50%;
     top: 50%;
+    transition: all 0.7s ease;
     transform: translate(-50%, -50%);
     text-align: center;
     color: white;
@@ -64,5 +80,10 @@
       line-height: 1;
       font-size: 1.5rem;
     }
+  }
+
+  .video-hero-text.hide {
+    opacity: 0;
+    transform: translate(-50%, -40%);
   }
 </style>
