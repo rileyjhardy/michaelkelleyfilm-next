@@ -1,15 +1,17 @@
 html, body {
+  --background-color: #000;
+  --text-color: #fff;
+
+  font-family: 'minion-pro', serif;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 .container {
   > section {
     padding: 0 15px 60px 15px;
   }
-}
-
-body {
-  font-family: 'minion-pro', serif;
 }

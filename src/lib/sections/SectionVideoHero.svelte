@@ -12,7 +12,14 @@
   {:then data}
 
     <video autoplay loop muted playsinline src={data.videoUrl}></video>
-    <!-- <img src={data.foregroundImageUrl} alt='Michael Kelley Film'/> -->
+    {#if data.foregroundImageUrl}
+      <img src={data.foregroundImageUrl} alt='Michael Kelley Film'/>
+    {:else}
+      <div class="video-hero-text">
+        <h1>Michael<br>Kelley</h1>
+        <h2>Director / Cinematographer</h2>
+      </div>
+    {/if}
   {/await}
 {:else}
   <p>Loading...</p>
@@ -28,12 +35,34 @@
     min-width: 100vw;
   }
 
-  /* img {
+  img {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     width: 500px;
     height: auto;
-  } */
+  }
+
+  .video-hero-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+
+    h1 {
+      font-size: 7rem;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-style: italic;
+      line-height: 1;
+      font-size: 1.5rem;
+    }
+  }
 </style>
