@@ -39,6 +39,23 @@ export class SanityService {
     }`, { id })
   }
 
+  async getSectionProjectGallery(id: string) {
+    return this.client.fetch(`*[_id == $id][0] {
+      ...,
+      projects[]-> {
+        ...,
+        "thumbnailUrl": thumbnail.asset->url
+      }
+    }`, { id })
+  }
+
+  async getSectionImage(id: string) {
+    return this.client.fetch(`*[_id == $id][0] {
+      ...,
+      "imageUrl": image.asset->url
+    }`, { id })
+  }
+
   // async getPosts() {
   //   return this.client.fetch(`*[_type == "post"] | order(publishedAt desc) {
   //     _id,

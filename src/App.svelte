@@ -7,7 +7,7 @@
   const sections = import.meta.glob('./lib/sections/*.svelte')
 </script>
 
-{#snippet sectionWrapper(section)}
+{#snippet sectionWrapper(section: any)}
   {#await resolveComponent(section._type, sections)}
     <p>Loading component...</p>
   {:then Component}
@@ -22,15 +22,17 @@
 {/snippet}
 
 <main>
-  {#await data}
-    <p>Loading...</p>
+  <div class="container">
+    {#await data}
+      <p>Loading...</p>
   {:then data}
     {#each data.sections as section}
       {@render sectionWrapper(section)}
     {/each}
   {:catch error}
-    <p>Error: {error}</p>
-  {/await}
+      <p>Error: {error}</p>
+    {/await}
+  </div>
 </main>
 
 <style>
