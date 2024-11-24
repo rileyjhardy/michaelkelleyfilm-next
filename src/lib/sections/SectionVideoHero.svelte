@@ -12,6 +12,10 @@
   }
 
   let section = $state(client.getSectionVideoHero(_id))
+
+  function handlePlayButtonClick() {
+    globalState.fullReelIsOpen = !globalState.fullReelIsOpen
+  }
 </script>
 
 {#if section}
@@ -36,7 +40,13 @@
         <h2>Director / Cinematographer</h2>
       </div>
 
-      <div class="play-button" class:hide={globalState.menuIsOpen || !isPlaying}>
+      <div class="play-button"
+        onclick={handlePlayButtonClick}
+        onkeypress={handlePlayButtonClick}
+        role="button"
+        tabindex="0"
+        class:hide={globalState.menuIsOpen || !isPlaying}
+      >
         <svg
           version="1.1"
           id="Layer_1"

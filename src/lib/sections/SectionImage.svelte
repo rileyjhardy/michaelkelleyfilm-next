@@ -4,7 +4,6 @@
   const { _id, _type } = $props()
 
   let section = $state(client.getSectionImage(_id))
-
 </script>
 
 {#await section}

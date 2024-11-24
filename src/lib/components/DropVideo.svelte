@@ -1,23 +1,31 @@
 <script lang="ts">
   import client from '../sanity-client'
+  import { globalState } from '../state.svelte'
 
   const config = $state(client.getGlobalConfig())
+
+  function handleCloseButtonClick() {
+    globalState.fullReelIsOpen = !globalState.fullReelIsOpen
+  }
 </script>
 
 {#await config}
   <p>Loading...</p>
 {:then config}
-  <div class="video-container">
+  <div class="video-container" class:show={globalState.fullReelIsOpen}>
     <iframe
       class="mx-auto"
       title='Full Reel'
-      src={`${config.vimeoReel}?autoplay=1`}
+      src={config.vimeoReel}
       width="896px"
       height="504px"
       frameBorder="0"
       allow="autoplay; fullscreen; picture-in-picture"
       allowFullScreen
     ></iframe>
+    <button class="close-button" onclick={handleCloseButtonClick}>
+      ×
+    </button>
   </div>
 {/await}
 
@@ -36,5 +44,10 @@
     justify-content: center;
     align-items: center;
     transform: translateY(-100%);
+    transition: transform 0.7s ease;
+  }
+
+  .video-container.show {
+    transform: translateY(0);
   }
 </style>

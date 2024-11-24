@@ -94,28 +94,6 @@
     pointer-events: all;
   }
 
-  .close-button {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    color: var(--text-color);
-    font-size: 2rem;
-    cursor: pointer;
-    padding: 0.5rem;
-    width: 3rem;
-    height: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s ease;
-  }
-
-  .close-button:hover {
-    transform: scale(1.1);
-  }
-  
   .contact-buttons {
     position: absolute;
     top: 50%;

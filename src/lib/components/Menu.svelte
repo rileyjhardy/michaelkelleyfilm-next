@@ -35,7 +35,7 @@
     right: 0;
     width: 100%;
     background-color: black;
-    z-index: 1000;
+    z-index: 900;
     opacity: 0.85;
     pointer-events: none;
     transition: all 0.7s ease;

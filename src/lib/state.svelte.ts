@@ -1,3 +1,4 @@
 export const globalState = $state({
-	menuIsOpen: false
+	menuIsOpen: false,
+  fullReelIsOpen: false
 });
