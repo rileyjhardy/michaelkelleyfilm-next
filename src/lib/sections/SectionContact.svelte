@@ -37,7 +37,6 @@
       <a href="mailto:{section.contact.email}" class="contact-button">
         Email
       </a>
-      {console.log(section)}
       <a href="tel:{section.contact.phone}" class="contact-button">
         Call
       </a>

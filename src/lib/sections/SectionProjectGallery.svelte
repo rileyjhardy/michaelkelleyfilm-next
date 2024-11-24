@@ -1,5 +1,6 @@
 <script lang="ts">
   import client from '../sanity-client'
+  import { Link } from 'svelte-routing'
 
   const { _id, _type } = $props()
 
@@ -12,12 +13,12 @@
 
 <div class="project-gallery">
   {#each section.projects as project}
-    <a href={project.slug.current}>
+    <Link to={`/${project.slug.current}`}>
       <div class="project-gallery-item">
         <h3 class="project-gallery-item__title">{project.name}</h3>
         <img src={project.thumbnailUrl} alt={project.name} />
       </div>
-    </a>
+    </Link>
   {/each}
 </div>
 

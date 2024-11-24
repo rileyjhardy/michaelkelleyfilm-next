@@ -1,7 +1,7 @@
 <script lang="ts">
   import client from '../sanity-client'
   import { globalState } from '../state.svelte'
-
+  import { DoubleBounce } from 'svelte-loading-spinners'
   const { _id, _type } = $props()
   let isPlaying = $state(false)
 
@@ -15,10 +15,11 @@
 </script>
 
 {#if section}
-  {#await section}
-    <p>Loading...</p>
+    {#await section}
+      <div class="flex justify-center items-center h-screen">
+        <DoubleBounce />
+      </div>
   {:then section}
-
     <video
       autoplay
       loop
@@ -34,6 +35,29 @@
         <h1>Michael<br>Kelley</h1>
         <h2>Director / Cinematographer</h2>
       </div>
+
+      <div class="play-button" class:hide={globalState.menuIsOpen || !isPlaying}>
+        <svg
+          version="1.1"
+          id="Layer_1"
+          width="40"
+          height="68.40690978886755"
+          xmlns="http://www.w3.org/2000/svg"
+          x="0px"
+          y="0px"
+          viewBox="0 0 52 60"
+        >
+          <path
+            fill="white"
+            d="M0,0v60l52-30L0,0z M3,5.2L46,30L3,54.8V5.2z"
+          ></path>
+          <path
+            fill="white"
+            class="play-button-effect"
+            d="M0,0v60l52-30L0,0z"
+        ></path>
+      </svg>
+    </div>
     {/if}
   {/await}
 {:else}
@@ -62,7 +86,7 @@
   .video-hero-text {
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 40%;
     transition: all 0.7s ease;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -86,4 +110,30 @@
     opacity: 0;
     transform: translate(-50%, -40%);
   }
+
+  .play-button {
+    position: absolute;
+    left: 50%;
+    bottom: 30%;
+    transform: translate(-50%, -20%);
+    cursor: pointer;
+    font-size: 50px;
+    opacity: 1;
+    transition: 500ms;
+  }
+
+.play-button-effect {
+  stroke-width: 3px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.play-button-effect:hover {
+  transform-origin: 0 0;
+  opacity: 1;
+}
+
+.hide {
+  opacity: 0;
+}
 </style>

@@ -23,3 +23,13 @@ html, body {
   z-index: 1000;
   --color: var(--text-color);
 }
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: gray;
+}

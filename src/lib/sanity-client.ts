@@ -80,6 +80,10 @@ export class SanityService {
     }`)
   }
 
+  async getProject(slug: string) {
+    return this.client.fetch(`*[_type == "project" && slug.current == $slug][0]`, { slug })
+  }
+
   // async getPosts() {
   //   return this.client.fetch(`*[_type == "post"] | order(publishedAt desc) {
   //     _id,
