@@ -10,11 +10,7 @@
   let project = $state(client.getProject(slug))
 </script>
 
-{#await project}
-  <div class="flex justify-center items-center h-screen">
-    <DoubleBounce />
-  </div>
-{:then project}
+{#await project then project}
   <div class="container d-flex vh-100 align-items-center">
     <div class="row vw-100">
       <div class="col-12 col-lg-6 video-container">

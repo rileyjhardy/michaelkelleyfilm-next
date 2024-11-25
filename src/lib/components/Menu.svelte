@@ -6,9 +6,7 @@
   let menu = $state(client.getMenu())
 </script>
 
-{#await menu}
-  <p>Loading menu...</p>
-{:then menu}
+{#await menu then menu}
   <div class="menu" class:visible={open}>
     <nav>
       <ul>
@@ -73,6 +71,10 @@
 
     a:hover {
       color: gray;
+    }
+
+    @media (max-width: 992px) {
+      font-size: 2.25rem;
     }
   }
 </style>

@@ -20,8 +20,7 @@
 
 {#if section}
     {#await section}
-      <div class="flex justify-center items-center h-screen">
-        <DoubleBounce />
+      <div class="flex justify-center items-center skeleton">
       </div>
   {:then section}
     <video
@@ -75,7 +74,8 @@
 {/if}
 
 <style>
-  video {
+  video,
+  .skeleton {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -106,6 +106,10 @@
       font-size: 7rem;
       text-transform: uppercase;
       line-height: 1;
+
+      @media (max-width: 768px) {
+        font-size: 4rem;
+      }
     }
 
     h2 {

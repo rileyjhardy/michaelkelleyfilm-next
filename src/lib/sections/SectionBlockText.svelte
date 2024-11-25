@@ -7,14 +7,10 @@
 
   let section = $state(client.getSection(_id))
 </script>
-{#await section}
-  <p>Loading...</p>
-{:then section}
-
-<div class="block-text" use:fadeInOnScroll>
-  <PortableText value={section.text} />
-</div>
-
+{#await section then section}
+  <div class="block-text" use:fadeInOnScroll>
+    <PortableText value={section.text} />
+  </div>
 {/await}
 
 <style>

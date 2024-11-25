@@ -11,9 +11,7 @@
   }
 </script>
 
-{#await section}
-  <p>Loading...</p>
-{:then section}
+{#await section then section}
   <div class="section-contact" use:fadeInOnScroll>
     {#each section.contact.socialLinks as socialMedia}
       <a href={socialMedia.url} target="_blank" rel="noopener noreferrer" aria-label={socialMedia.name}>

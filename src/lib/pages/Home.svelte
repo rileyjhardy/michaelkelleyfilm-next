@@ -6,7 +6,7 @@
   import { Hamburger } from 'svelte-hamburgers'
   import { globalState } from '../state.svelte';
 
-  let data = $state(client.getPage('/'))
+  let page = $state(client.getPage('/'))
 
   const sections = import.meta.glob('../sections/*.svelte')
 
@@ -16,9 +16,7 @@
 </script>
 
 {#snippet sectionWrapper(section: any)}
-  {#await resolveComponent(section._type, sections)}
-    <p>Loading component...</p>
-  {:then Component}
+  {#await resolveComponent(section._type, sections) then Component}
     {#if Component}
       <section id={camelToKebab(section._type)}>
         <Component {...section} />
@@ -34,10 +32,8 @@
   <DropVideo />
   <Hamburger type="spin" onclick={toggleMenu} />
   <div class="container">
-    {#await data}
-      <p>Loading...</p>
-    {:then data}
-      {#each data.sections as section}
+    {#await page then page}
+      {#each page.sections as section}
         {@render sectionWrapper(section)}
       {/each}
     {:catch error}

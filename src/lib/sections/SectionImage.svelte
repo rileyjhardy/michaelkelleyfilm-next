@@ -8,9 +8,7 @@
 
 </script>
 
-{#await section}
-  <p>Loading...</p>
-{:then section}
+{#await section then section}
   <div
     class="row justify-content-center"
     use:fadeInOnScroll>

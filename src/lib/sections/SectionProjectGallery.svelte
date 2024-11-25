@@ -7,21 +7,17 @@
   let section = $state(client.getSectionProjectGallery(_id))
 </script>
 
-{#await section}
-  <p>Loading...</p>
-{:then section}
-
-<div class="project-gallery">
-  {#each section.projects as project}
-    <Link to={`/${project.slug.current}`}>
-      <div class="project-gallery-item" use:fadeInOnScroll>
-        <h3 class="project-gallery-item__title">{project.name}</h3>
-        <img src={project.thumbnailUrl} alt={project.name} />
-      </div>
-    </Link>
-  {/each}
-</div>
-
+{#await section then section}
+  <div class="project-gallery">
+    {#each section.projects as project}
+      <Link to={`/${project.slug.current}`}>
+        <div class="project-gallery-item" use:fadeInOnScroll>
+          <h3 class="project-gallery-item__title">{project.name}</h3>
+          <img src={project.thumbnailUrl} alt={project.name} />
+        </div>
+      </Link>
+    {/each}
+  </div>
 {/await}
 
 <style>

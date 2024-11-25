@@ -9,9 +9,7 @@
   }
 </script>
 
-{#await config}
-  <p>Loading...</p>
-{:then config}
+{#await config then config}
   <div class="video-container" class:show={globalState.fullReelIsOpen}>
     <iframe
       class="mx-auto"
