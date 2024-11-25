@@ -1,6 +1,7 @@
 <script lang="ts">
   import { PortableText } from '@portabletext/svelte'
   import client from '../sanity-client'
+  import { fadeInOnScroll } from '../actions/intersectionObserver'
 
   const { _id, _type } = $props()
 
@@ -10,7 +11,7 @@
   <p>Loading...</p>
 {:then section}
 
-<div class="block-text">
+<div class="block-text" use:fadeInOnScroll>
   <PortableText value={section.text} />
 </div>
 
@@ -18,7 +19,10 @@
 
 <style>
   .block-text {
-    max-width: 50%;
     margin: 0 auto;
+
+    @media (min-width: 992px) {
+      max-width: 50%;
+    }
   }
 </style>

@@ -1,6 +1,6 @@
 <script lang="ts">
   import client from '../sanity-client'
-
+  import { fadeInOnScroll } from '../actions/intersectionObserver'
   const { _id } = $props()
 
   const section = $state(client.getSectionContact(_id))
@@ -14,7 +14,7 @@
 {#await section}
   <p>Loading...</p>
 {:then section}
-  <div class="section-contact">
+  <div class="section-contact" use:fadeInOnScroll>
     {#each section.contact.socialLinks as socialMedia}
       <a href={socialMedia.url} target="_blank" rel="noopener noreferrer" aria-label={socialMedia.name}>
         <i class={socialMedia.icon}></i>
@@ -22,7 +22,7 @@
     {/each}
   </div>
   
-  <div class="section-contact-button">
+  <div class="section-contact-button" use:fadeInOnScroll>
     <button onclick={toggleOverlay}>
       Contact
     </button>

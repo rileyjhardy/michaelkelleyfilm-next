@@ -3,6 +3,7 @@
   import { PortableText } from '@portabletext/svelte'
   import { DoubleBounce } from 'svelte-loading-spinners'
   import { Link } from 'svelte-routing'
+  import { fadeInOnScroll } from '../actions/intersectionObserver'
 
   const { slug } = $props()
 
@@ -27,7 +28,7 @@
         allowFullScreen
         ></iframe>
       </div>
-      <div class="col-12 col-lg-6 d-flex flex-column justify-content-center">
+      <div class="col-12 col-lg-6 d-flex flex-column justify-content-center" use:fadeInOnScroll>
         <PortableText value={project.description} />
       </div>
     </div>
