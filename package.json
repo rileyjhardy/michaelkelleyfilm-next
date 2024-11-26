@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json && tsc -p tsconfig.node.json"
   },
-  "devDependencies": {
+  "dependencies": {
     "@portabletext/svelte": "npm:@eirikk/portabletext-2-svelte-5@0.1.0-alpha.2",
     "@sveltejs/vite-plugin-svelte": "^4.0.0",
     "@tsconfig/svelte": "^5.0.4",
@@ -21,9 +21,7 @@
     "svelte-routing": "^2.13.0",
     "tslib": "^2.8.0",
     "typescript": "~5.6.2",
-    "vite": "^5.4.10"
-  },
-  "dependencies": {
+    "vite": "^5.4.10",
     "@sanity/client": "^6.22.5",
     "@sanity/image-url": "^1.1.0"
   }
