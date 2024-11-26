@@ -50,6 +50,7 @@ a:hover {
   align-items: center;
   justify-content: center;
   transition: transform 0.2s ease;
+  z-index: 1000;
 }
 
 .close-button:hover {
