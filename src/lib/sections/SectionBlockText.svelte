@@ -1,7 +1,7 @@
 <script lang="ts">
   import { PortableText } from '@portabletext/svelte'
   import client from '../sanity-client'
-  import { fadeInOnScroll } from '../actions/intersectionObserver'
+  import { fadeInOnScroll } from '../actions/fadeInOnScroll'
 
   const { _id, _type } = $props()
 

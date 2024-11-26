@@ -1,6 +1,6 @@
 <script lang="ts">
   import client from '../sanity-client'
-  import { fadeInOnScroll } from '../actions/intersectionObserver'
+  import { fadeInOnScroll } from '../actions/fadeInOnScroll'
 
   const { _id, _type } = $props()
 

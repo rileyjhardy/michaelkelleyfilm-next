@@ -1,21 +1,30 @@
 <script lang="ts">
   import client from '../sanity-client'
-  import { Link } from 'svelte-routing'
-  import { fadeInOnScroll } from '../actions/intersectionObserver'
+  import { fadeInOnScroll } from '../actions/fadeInOnScroll'
+  import { globalState } from '../state.svelte'
   const { _id, _type } = $props()
 
   let section = $state(client.getSectionProjectGallery(_id))
+
+  const mountVideo = (slug: string) => {
+    globalState.mountedVideo = slug
+  }
 </script>
 
 {#await section then section}
   <div class="project-gallery">
     {#each section.projects as project}
-      <Link to={`/${project.slug.current}`}>
-        <div class="project-gallery-item" use:fadeInOnScroll>
-          <h3 class="project-gallery-item__title">{project.name}</h3>
-          <img src={project.thumbnailUrl} alt={project.name} />
-        </div>
-      </Link>
+      <div
+        onclick={() => mountVideo(project.slug.current)}
+        onkeypress={() => mountVideo(project.slug.current)}
+        role="button"
+        tabindex="0"
+        class="project-gallery-item"
+        use:fadeInOnScroll
+      >
+        <h3 class="project-gallery-item__title">{project.name}</h3>
+        <img src={project.thumbnailUrl} alt={project.name} />
+      </div>
     {/each}
   </div>
 {/await}
@@ -26,10 +35,14 @@
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     margin: 0 auto;
-    padding: 0 2rem;
+    /* padding: 0 2rem; */
 
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 768px) {
+      padding: 0 2rem;
     }
   }
 

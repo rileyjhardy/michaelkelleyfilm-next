@@ -1,6 +1,7 @@
 <script lang="ts">
   import client from '../sanity-client'
-  import { fadeInOnScroll } from '../actions/intersectionObserver'
+  import { fadeInOnScroll } from '../actions/fadeInOnScroll'
+
   const { _id } = $props()
 
   const section = $state(client.getSectionContact(_id))

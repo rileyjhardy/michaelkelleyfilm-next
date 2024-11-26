@@ -13,7 +13,7 @@ export function camelToKebab(str: string) {
 
 export async function resolveComponent(type: string, sections: any) {
   try {
-    const path = `../sections/${type.charAt(0).toUpperCase() + type.slice(1)}.svelte`
+    const path = `./lib/sections/${type.charAt(0).toUpperCase() + type.slice(1)}.svelte`
 
     if (path in sections) {
       const module = await sections[path]()
