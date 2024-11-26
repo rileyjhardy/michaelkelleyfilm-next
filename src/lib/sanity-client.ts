@@ -9,7 +9,7 @@ export class SanityService {
   constructor(config?: Partial<ClientConfig>) {
     this.client = createClient({
       projectId: '8fwxmm43',
-      dataset: 'production',
+      dataset: import.meta.env.VITE_SANITY_ENV || 'production',
       apiVersion: '2024-09-18',
       useCdn: true,
     })
