@@ -23,7 +23,7 @@
         use:fadeInOnScroll
       >
         <h3 class="project-gallery-item__title">{project.name}</h3>
-        <img src={project.thumbnailUrl} alt={project.name} />
+        <img src={client.urlFor(project.thumbnail).width(500).url()} alt={project.name} />
       </div>
     {/each}
   </div>

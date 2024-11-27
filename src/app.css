@@ -65,31 +65,3 @@ a:hover {
 .unhidden {
   opacity: 1;
 }
-
-.skeleton {
-  animation: skeleton-loading 0.5s linear infinite alternate;
-}
-
-@keyframes skeleton-loading {
-  0% {
-    background-color: var(--background-color);
-  }
-  100% {
-    background-color: gray;
-  }
-}
-
-.skeleton-text {
-  width: 100%;
-  height: 0.7rem;
-  margin-bottom: 0.5rem;
-  border-radius: 0.25rem;
-}
-
-.skeleton-text__body {
-  width: 75%;
-}
-
-.skeleton-footer {
-  width: 30%;
-}

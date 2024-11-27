@@ -118,6 +118,10 @@
     transform: translate(-50%, -40%);
   }
 
+  .hide {
+    opacity: 0;
+  }
+
   .play-button {
     position: absolute;
     left: 50%;
@@ -138,9 +142,5 @@
   .play-button-effect:hover {
     transform-origin: 0 0;
     opacity: 1;
-  }
-
-  .hide {
-    opacity: 0;
   }
 </style>

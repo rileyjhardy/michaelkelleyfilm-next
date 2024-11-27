@@ -12,7 +12,7 @@
   <div
     class="row justify-content-center"
     use:fadeInOnScroll>
-    <img class="col-12 col-lg-6" src={section.imageUrl} alt={section.title} />
+    <img class="col-12 col-lg-6" src={client.urlFor(section.image).width(1200).url()} alt={section.title} />
   </div>
 
 {/await}
