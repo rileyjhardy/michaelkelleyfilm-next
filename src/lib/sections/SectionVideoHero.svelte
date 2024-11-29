@@ -118,10 +118,6 @@
     transform: translate(-50%, -40%);
   }
 
-  .hide {
-    opacity: 0;
-  }
-
   .play-button {
     position: absolute;
     left: 50%;
@@ -130,7 +126,12 @@
     cursor: pointer;
     font-size: 50px;
     opacity: 1;
-    transition: 500ms;
+    transition: all 0.7s ease;
+  }
+
+  .play-button.hide {
+    opacity: 0;
+    transform: translate(-50%, 0%);
   }
 
   .play-button-effect {
